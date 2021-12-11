@@ -30,5 +30,5 @@ func _process(delta):
 			velocity.y = gravity.y 
 	
 	mydirection += velocity
-	
-	move_and_slide(mydirection*speed, Vector2(0,-1))
+	mydirection.x = mydirection.x * speed # consistent jump height regardless of "speed" variable
+	move_and_slide(mydirection, Vector2(0,-1))
