@@ -4,11 +4,12 @@ extends Node
 
 signal transitioned(state_name)
 
-export var initial_state := NodePath()
+export var initial_state:NodePath = NodePath()
 
 onready var state: State = get_node(initial_state)
 
-func ready():
+func _ready():
+
 	for child in get_children():
 		child.state_machine = self
 	state.enter()
