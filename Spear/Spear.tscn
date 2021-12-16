@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Spear/Spear.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 29.937, 1.1428 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "stab"
+length = 0.22
+tracks/0/type = "value"
+tracks/0/path = NodePath("AxisOfRotation/KinematicBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.120333, 0.216451 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 30, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Spear" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="AxisOfRotation" type="Position2D" parent="."]
+rotation = -0.680678
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="AxisOfRotation"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AxisOfRotation/KinematicBody2D"]
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="AxisOfRotation/KinematicBody2D/CollisionShape2D"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -1.0
+margin_right = 30.0
+margin_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/stab = SubResource( 2 )
