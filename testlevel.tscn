@@ -7,12 +7,12 @@
 scale = Vector2( 0.997544, 1 )
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 559.498 )
-scale = Vector2( 25.6802, 1 )
+position = Vector2( -1.67978, 289.206 )
+scale = Vector2( 12.874, 0.334 )
 
 [node name="StaticBody2D2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 250, 498 )
-scale = Vector2( 6, 0.5 )
+position = Vector2( 226.239, 254.141 )
+scale = Vector2( 6, 0.278 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 201, 520 )
+position = Vector2( 134.662, 244.153 )

@@ -11,8 +11,10 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Dash")
 	var mydirection:Vector2 = Vector2(0,0)
 	if Input.is_action_pressed("key_left"):
+		player.get_node("nose").flip_h = false
 		mydirection += Vector2(-1,0)
 	if Input.is_action_pressed("key_right"):
+		player.get_node("nose").flip_h = true
 		mydirection += Vector2(1,0)
 	
 	if !player.is_on_floor():
