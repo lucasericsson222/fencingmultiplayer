@@ -11,11 +11,12 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Dash")
 	var mydirection:Vector2 = Vector2(0,0)
 	if Input.is_action_pressed("key_left"):
-		player.get_node("nose").flip_h = false
 		mydirection += Vector2(-1,0)
 	if Input.is_action_pressed("key_right"):
-		player.get_node("nose").flip_h = true
 		mydirection += Vector2(1,0)
+	if !Input.is_action_pressed("key_left") and !Input.is_action_pressed("key_right"):
+		var damp_speed = clamp(player.decelerate_speed,0, abs(player.velocity.x))
+		player.velocity.x -= damp_speed * sign(player.velocity.x)
 	
 	if !player.is_on_floor():
 		player.velocity.y += player.gravity.y
@@ -24,10 +25,8 @@ func physics_update(_delta: float) -> void:
 			player.velocity.y = -player.jump_strength
 		else:
 			player.velocity.y = player.gravity.y 
-	
-	mydirection.y += player.velocity.y
-	
-	mydirection.x = mydirection.x * player.speed # consistent jump height regardless of "speed" variable
-	player.velocity.x = mydirection.x
-	player.move_and_slide(mydirection, player.up_direction)
+
+	player.velocity.x += mydirection.x * player.speed # consistent jump height regardless of "speed" variable
+	player.velocity.x = clamp(player.velocity.x, -player.max_speed, player.max_speed)
+	player.move_and_slide(player.velocity, player.up_direction)
 	

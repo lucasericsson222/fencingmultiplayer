@@ -6,15 +6,31 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed = 150
-export var gravity = Vector2(0, 25)
+var speed = 30
+export var gravity = Vector2(0, 9.8)
 var velocity:Vector2
-var jump_strength = 400
-var dash_speed = 450
+var jump_strength = 250
+var dash_speed = 4
 var up_direction = Vector2(0,-1)
+var max_speed = 170
+var decelerate_speed = 30
+var nose_position = Vector2(0,0)
+var hat_position = Vector2(0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	nose_position = $nose.position
+	hat_position = $hat.position
 	pass # Replace with function body.
 
 func _process(delta):
-	pass
+	var offset = Vector2(0,0)
+	if Input.is_action_pressed("key_up"):
+		offset += Vector2(0,-1)
+	if Input.is_action_pressed("key_down"):
+		offset += Vector2(0,1)
+	if Input.is_action_pressed("key_left"):
+		offset += Vector2(-1,0)
+	if Input.is_action_pressed("key_right"):
+		offset += Vector2(1,0)
+	var nose_offset =Vector2(offset.x * 3, offset.y * 2) 
+	$nose.position =lerp($nose.position, nose_position + nose_offset, 0.01)
