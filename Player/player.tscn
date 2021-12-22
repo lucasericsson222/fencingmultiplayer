@@ -8,7 +8,7 @@
 [ext_resource path="res://Player/Sprites/hat.png" type="Texture" id=6]
 [ext_resource path="res://Player/Sprites/nose.png" type="Texture" id=7]
 [ext_resource path="res://Player/Sprites/body.png" type="Texture" id=8]
-[ext_resource path="res://Player/Sprites/spear.png" type="Texture" id=9]
+[ext_resource path="res://Spear/Spear.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.49266, 9.19003 )
@@ -46,6 +46,12 @@ texture = ExtResource( 6 )
 position = Vector2( 5, -2 )
 texture = ExtResource( 7 )
 
-[node name="spear" type="Sprite" parent="."]
-position = Vector2( -6.9722, -0.134033 )
-texture = ExtResource( 9 )
+[node name="Spear" parent="." instance=ExtResource( 9 )]
+position = Vector2( -7.25209, -1.14843 )
+
+[node name="nose" type="Sprite" parent="Spear"]
+position = Vector2( 5.5, 0 )
+texture = ExtResource( 7 )
+
+[node name="spearcentralposition" type="Position2D" parent="."]
+position = Vector2( 0, -1 )
