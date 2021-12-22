@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/player.gd" type="Script" id=1]
 [ext_resource path="res://StateMachine/statemachine.gd" type="Script" id=2]
@@ -9,9 +9,13 @@
 [ext_resource path="res://Player/Sprites/nose.png" type="Texture" id=7]
 [ext_resource path="res://Player/Sprites/body.png" type="Texture" id=8]
 [ext_resource path="res://Spear/Spear.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/nose2.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.49266, 9.19003 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 21.5282
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 3
@@ -49,9 +53,22 @@ texture = ExtResource( 7 )
 [node name="Spear" parent="." instance=ExtResource( 9 )]
 position = Vector2( -7.25209, -1.14843 )
 
-[node name="nose" type="Sprite" parent="Spear"]
-position = Vector2( 5.5, 0 )
+[node name="nose2" type="Sprite" parent="."]
+position = Vector2( 5, -2 )
 texture = ExtResource( 7 )
+script = ExtResource( 10 )
 
 [node name="spearcentralposition" type="Position2D" parent="."]
 position = Vector2( 0, -1 )
+
+[node name="pickuprange" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickuprange"]
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
