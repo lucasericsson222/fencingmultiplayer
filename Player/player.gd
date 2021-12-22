@@ -10,7 +10,7 @@ var speed = 30
 export var gravity = Vector2(0, 9.8)
 var velocity:Vector2
 var jump_strength = 250
-var dash_speed = 4
+var dash_speed = 400
 var up_direction = Vector2(0,-1)
 var max_speed = 170
 var decelerate_speed = 30
