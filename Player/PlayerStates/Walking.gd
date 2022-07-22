@@ -67,7 +67,7 @@ func physics_update(_delta: float) -> void:
 		
 	elif Input.is_action_pressed("key_throw"):
 		for thrown_spear in player.get_node("pickuprange").get_overlapping_bodies():
-			if (player.get_node_or_null("Spear") == null) and thrown_spear.collided:
+			if (player.get_node_or_null("Spear") == null) and thrown_spear.collided and !(player.get_node("Timer").time_left > 0):
 				thrown_spear.queue_free()
 				var myspear = spearscene.instance()
 				myspear.name = "Spear"

@@ -1,37 +1,19 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://wall.png" type="Texture" id=1]
+[ext_resource path="res://forestbackground.png" type="Texture" id=1]
 [ext_resource path="res://Player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Background2.png" type="Texture" id=3]
-[ext_resource path="res://woodbackground.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 270.173, 10.2155 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7.39299, 40.6589 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 7.11018, 23.8739 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 7.53435, 71.6902 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 69.4738, 7.02837 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 100.03, 6.86722 )
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2( 0.997544, 1 )
 
 [node name="Background" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 centered = false
 
 [node name="wall" type="Sprite" parent="."]
-texture = ExtResource( 1 )
 centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall"]
@@ -44,28 +26,22 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="wall/StaticBody2D"]
 position = Vector2( 88.3809, 152.181 )
-shape = SubResource( 2 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="wall/StaticBody2D"]
 position = Vector2( 151.727, 152.745 )
-shape = SubResource( 3 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="wall/StaticBody2D"]
 position = Vector2( 7.50102, 151.193 )
-shape = SubResource( 4 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="wall/StaticBody2D"]
 position = Vector2( 280.887, 168.321 )
-shape = SubResource( 5 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="wall/StaticBody2D"]
 position = Vector2( 286.213, 248.53 )
-shape = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 134.662, 244.153 )
 
 [node name="woodbackground" type="Sprite" parent="."]
 z_index = 1
-texture = ExtResource( 4 )
 centered = false
